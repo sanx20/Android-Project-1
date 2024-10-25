@@ -2,4 +2,8 @@
     <string name="app_name">Project1</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_app">This app shows list of Animes and user can view details of an Anime.</string>
+    <string name="team_members">Team Members</string>
+    <string name="team_member_list">Sanchit Arora \nDeepak John \nAligazy Kismetov \nTirthesh Motiwala</string>
+    <string name="about">About</string>
 </resources>
