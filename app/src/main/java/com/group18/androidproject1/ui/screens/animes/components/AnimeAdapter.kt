@@ -10,16 +10,14 @@ import com.group18.androidproject1.R
 import com.group18.androidproject1.data.models.Anime
 import com.squareup.picasso.Picasso
 
+class AnimeAdapter(private val onItemClicked: (Anime) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-class AnimeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private val animeList = mutableListOf<Anime>()
-
+    private val animeList = mutableListOf<Anime?>()
     private var isLoading = false
 
     companion object {
-        const val VIEW_TYPE_ITEM = 0
-        const val VIEW_TYPE_LOADING = 1
+        private const val VIEW_TYPE_ITEM = 0
+        private const val VIEW_TYPE_LOADING = 1
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -29,7 +27,7 @@ class AnimeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == VIEW_TYPE_ITEM) {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_anime, parent, false)
-            AnimeViewHolder(view)
+            AnimeViewHolder(view, onItemClicked)
         } else {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_loading, parent, false)
             LoadingViewHolder(view)
@@ -39,34 +37,41 @@ class AnimeAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is AnimeViewHolder) {
             val anime = animeList[position]
-            holder.bind(anime)
+            anime?.let {
+                holder.bind(it)
+            }
         }
     }
 
     override fun getItemCount(): Int = animeList.size + if (isLoading) 1 else 0
 
     fun submitList(list: List<Anime>) {
+        animeList.clear()
         animeList.addAll(list)
         notifyDataSetChanged()
     }
 
     fun showLoading() {
         isLoading = true
-        notifyItemInserted(animeList.size) // Show loading footer
+        notifyItemInserted(animeList.size)
     }
 
     fun hideLoading() {
         isLoading = false
-        notifyItemRemoved(animeList.size) // Hide loading footer
+        notifyItemRemoved(animeList.size)
     }
 
-    class AnimeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class AnimeViewHolder(itemView: View, private val onItemClicked: (Anime) -> Unit) : RecyclerView.ViewHolder(itemView) {
         private val titleTextView: TextView = itemView.findViewById(R.id.animeTitle)
-        private val animeImageView: ImageView = itemView.findViewById(R.id.animeImage)
+        private val imageView: ImageView = itemView.findViewById(R.id.animeImage)
 
         fun bind(anime: Anime) {
             titleTextView.text = anime.title
-            Picasso.get().load(anime.images.jpg.imageUrl).into(animeImageView)
+            Picasso.get().load(anime.images.jpg.imageUrl).into(imageView)
+
+            itemView.setOnClickListener {
+                onItemClicked(anime)
+            }
         }
     }
 

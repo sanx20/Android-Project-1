@@ -2,6 +2,7 @@ package com.group18.androidproject1.domain.retrofit
 
 import com.group18.androidproject1.domain.anime.AnimeApiService
 import com.group18.androidproject1.domain.manga.MangaApiService
+import com.group18.androidproject1.domain.review.ReviewApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -22,5 +23,13 @@ object RetrofitInstance {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(MangaApiService::class.java)
+    }
+
+    val reviewApi: ReviewApiService by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(ReviewApiService::class.java)
     }
 }
