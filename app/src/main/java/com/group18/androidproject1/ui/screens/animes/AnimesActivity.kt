@@ -46,7 +46,7 @@ class AnimesActivity : AppCompatActivity() {
 
                 if (!animeViewModel.isLoading.value!! && animeViewModel.hasNextPage.value == true) {
                     if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0) {
-                        animeViewModel.loadNextPage() // Load next page
+                        animeViewModel.loadNextPage()
                     }
                 }
             }
