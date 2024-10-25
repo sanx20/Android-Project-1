@@ -1,5 +1,6 @@
 package com.group18.androidproject1.ui.screens.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.group18.androidproject1.R
+import com.group18.androidproject1.ui.screens.menu.MenuActivity
 import com.group18.androidproject1.ui.viewmodels.auth.AuthResult
 import com.group18.androidproject1.ui.viewmodels.auth.AuthViewModel
 
@@ -57,7 +59,10 @@ class LoginFragment : Fragment() {
                     progressBar.visibility = View.GONE
                     loginButton.isEnabled = true
                     Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_loginFragment_to_rootFragment)
+
+                    val intent = Intent(activity, MenuActivity::class.java)
+                    startActivity(intent)
+                    activity?.finish()
                 }
                 is AuthResult.Error -> {
                     progressBar.visibility = View.GONE
@@ -66,6 +71,7 @@ class LoginFragment : Fragment() {
                 }
             }
         }
+
         registerText.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }

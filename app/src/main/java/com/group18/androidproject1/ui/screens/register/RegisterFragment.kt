@@ -1,5 +1,6 @@
 package com.group18.androidproject1.ui.screens.register
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +14,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.group18.androidproject1.R
+import com.group18.androidproject1.ui.screens.menu.MenuActivity
 import com.group18.androidproject1.ui.viewmodels.auth.AuthResult
 import com.group18.androidproject1.ui.viewmodels.auth.AuthViewModel
+
 
 
 class RegisterFragment : Fragment() {
@@ -58,7 +61,10 @@ class RegisterFragment : Fragment() {
                     progressBar.visibility = View.GONE
                     registerButton.isEnabled = true
                     Toast.makeText(context, "Registration successful", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_registerFragment_to_rootFragment)
+
+                    val intent = Intent(activity, MenuActivity::class.java)
+                    startActivity(intent)
+                    activity?.finish()
                 }
                 is AuthResult.Error -> {
                     progressBar.visibility = View.GONE
