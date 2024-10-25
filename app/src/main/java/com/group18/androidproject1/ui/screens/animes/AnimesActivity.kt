@@ -19,7 +19,7 @@ import com.group18.androidproject1.ui.viewmodels.anime.AnimeViewModelFactory
 class AnimesActivity : AppCompatActivity() {
 
     private val animeViewModel: AnimeViewModel by viewModels {
-        AnimeViewModelFactory(AnimeRepository(RetrofitInstance.api))
+        AnimeViewModelFactory(AnimeRepository(RetrofitInstance.animeApi))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

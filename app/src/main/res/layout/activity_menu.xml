@@ -24,4 +24,10 @@
         android:layout_height="wrap_content"
         android:text="Reviews" />
 
+    <Button
+        android:id="@+id/btnAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About" />
+
 </LinearLayout>
