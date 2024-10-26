@@ -1,33 +1,146 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     android:padding="16dp">
 
-    <Button
-        android:id="@+id/btnAnimes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Animes" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnManga"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Manga" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnReviews"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Reviews" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/center_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
 
-    <Button
-        android:id="@+id/btnAbout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="About" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnAnimes"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="2:3"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginEnd="@dimen/_4dp"
+                app:layout_constraintRight_toLeftOf="@id/center_guideline"
+                app:layout_constraintTop_toTopOf="parent"
+                app:cardCornerRadius="@dimen/_8dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/anime"
+                    android:scaleType="centerCrop"
+                    app:tint="#28282B"
+                    android:tintMode="multiply"/>
 
-</LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/animes"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnReviews"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="2:3"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="@dimen/_8dp"
+                android:layout_marginEnd="@dimen/_4dp"
+                app:layout_constraintRight_toLeftOf="@id/center_guideline"
+                app:layout_constraintTop_toBottomOf="@id/btnAnimes"
+                app:cardCornerRadius="@dimen/_8dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/reviews"
+                    android:scaleType="centerCrop"
+                    app:tint="#28282B"
+                    android:tintMode="multiply"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reviews"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnManga"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="2:3"
+                app:layout_constraintLeft_toLeftOf="@id/center_guideline"
+                android:layout_marginStart="@dimen/_4dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:cardCornerRadius="@dimen/_8dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/manga"
+                    android:scaleType="centerCrop"
+                    app:tint="#28282B"
+                    android:tintMode="multiply"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/manga"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_gravity="center"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnAbout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="2:3"
+                app:layout_constraintLeft_toLeftOf="@id/center_guideline"
+                android:layout_marginStart="@dimen/_4dp"
+                android:layout_marginTop="@dimen/_8dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnManga"
+                app:cardCornerRadius="@dimen/_8dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/about"
+                    android:scaleType="centerCrop"
+                    app:tint="#28282B"
+                    android:tintMode="multiply"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
