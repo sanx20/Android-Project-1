@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">Project1</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="about_app">This app shows list of Animes and user can view details of an Anime.</string>
-    <string name="team_members">Team Members</string>
-    <string name="team_member_list">Sanchit Arora \nDeepak John \nAligazy Kismetov \nTirthesh Motiwala</string>
+    <string name="about_app">Anime Explorer is a user-friendly app designed for anime enthusiasts, allowing you to browse an extensive library of anime titles across various genres. With features like detailed information on each anime—including synopses, episode counts, and user ratings—alongside stunning visuals, you can easily discover and track your favorite series. The app also lets you bookmark titles for quick access and stay updated on the latest releases. Download Anime Explorer to dive into the captivating world of anime and enhance your viewing experience!</string>
+    <string name="team_members">Team Members - Group 18</string>
+    <string name="team_member_list">Sanchit Arora  s_arora222058 \n\nDeepak John  d_john252662 \n\nAligazy Kismetov  a_kismetov \n\nTirthesh Motiwala  t_motiwala</string>
     <string name="about">About</string>
+    <string name="animes">Animes</string>
+    <string name="manga">Manga</string>
+    <string name="reviews">Reviews</string>
+    <string name="ratio">2:3</string>
 </resources>

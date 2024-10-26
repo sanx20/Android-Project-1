@@ -5,11 +5,12 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/mangaImage"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/CornerRadiusImageViewStyle"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

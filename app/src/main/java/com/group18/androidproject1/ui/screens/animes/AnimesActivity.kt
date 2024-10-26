@@ -2,6 +2,7 @@ package com.group18.androidproject1.ui.screens.animes
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
@@ -27,6 +28,12 @@ class AnimesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_animes)
+
+        supportActionBar?.apply {
+            this.title = getString(R.string.animes)
+            setDisplayHomeAsUpEnabled(true)
+            setHomeButtonEnabled(true)
+        }
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewAnimes)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
@@ -97,5 +104,15 @@ class AnimesActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            android.R.id.home -> {
+                onBackPressedDispatcher.onBackPressed()
+                true
+            }
+            else ->  super.onOptionsItemSelected(item)
+        }
     }
 }
