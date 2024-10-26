@@ -2,11 +2,13 @@ package com.group18.androidproject1.ui.screens.manga
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.group18.androidproject1.R
 import com.group18.androidproject1.data.repository.manga.MangaRepository
 import com.group18.androidproject1.databinding.ActivityMangaBinding
 import com.group18.androidproject1.domain.retrofit.RetrofitInstance
@@ -28,6 +30,12 @@ class MangaActivity : AppCompatActivity() {
 
         binding = ActivityMangaBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportActionBar?.apply {
+            this.title = getString(R.string.manga)
+            setDisplayHomeAsUpEnabled(true)
+            setHomeButtonEnabled(true)
+        }
 
         val adapter = MangaAdapter { manga ->
             val intent = Intent(this, MangaDetailsActivity::class.java).apply {
@@ -92,5 +100,15 @@ class MangaActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            android.R.id.home -> {
+                onBackPressedDispatcher.onBackPressed()
+                true
+            }
+            else ->  super.onOptionsItemSelected(item)
+        }
     }
 }

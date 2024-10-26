@@ -2,10 +2,12 @@ package com.group18.androidproject1.ui.screens.reviews
 
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.group18.androidproject1.R
 import com.group18.androidproject1.databinding.ActivityReviewsBinding
 import com.group18.androidproject1.data.repository.review.ReviewRepository
 import com.group18.androidproject1.domain.retrofit.RetrofitInstance
@@ -26,9 +28,15 @@ class ReviewsActivity : AppCompatActivity() {
         binding = ActivityReviewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.apply {
+            this.title = getString(R.string.reviews)
+            setDisplayHomeAsUpEnabled(true)
+            setHomeButtonEnabled(true)
+        }
+
         val adapter = ReviewsAdapter()
         // Use GridLayoutManager for 2-column grid
-        binding.recyclerViewReviews.layoutManager = GridLayoutManager(this, 2)
+        binding.recyclerViewReviews.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewReviews.adapter = adapter
 
         reviewViewModel.reviewList.observe(this, { reviews ->
@@ -68,6 +76,16 @@ class ReviewsActivity : AppCompatActivity() {
         binding.retryButton.setOnClickListener {
             Log.d("ReviewsActivity", "Retry button clicked")
             reviewViewModel.fetchReviews()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            android.R.id.home -> {
+                onBackPressedDispatcher.onBackPressed()
+                true
+            }
+            else ->  super.onOptionsItemSelected(item)
         }
     }
 }

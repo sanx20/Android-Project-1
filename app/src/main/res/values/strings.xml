@@ -5,4 +5,7 @@
     <string name="team_members">Team Members</string>
     <string name="team_member_list">Sanchit Arora \nDeepak John \nAligazy Kismetov \nTirthesh Motiwala</string>
     <string name="about">About</string>
+    <string name="animes">Animes</string>
+    <string name="manga">Manga</string>
+    <string name="reviews">Reviews</string>
 </resources>
